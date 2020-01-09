@@ -16,7 +16,11 @@ public class StringComputeTest extends TestCase{
 	@Test
 	public void test_numbers() {
 		String result = compute.doMain("21");
-		System.out.println(result);
+		assertEquals("FooQix",result);
+		result = compute.doMain("8");
+		assertEquals("8", result);
+		result = compute.doMain("13");
+		assertEquals("Foo", result);
 	}
 
 }
