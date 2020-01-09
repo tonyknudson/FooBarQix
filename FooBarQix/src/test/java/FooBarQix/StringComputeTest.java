@@ -13,6 +13,10 @@ public class StringComputeTest extends TestCase {
 		assertEquals("Foo", result);
 	}
 	
+	/*
+	 * 0, null, negatives
+	 */
+	
 	@Test
 	public void test_numbers() {
 		assertEquals("1", compute.doMain("1"));
