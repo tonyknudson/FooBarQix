@@ -31,7 +31,6 @@ public class StringCompute {
 			if (number % 3 == 0) {
 				buffer.append("Foo");
 			}
-
 			if (number % 5 == 0) {
 				buffer.append("Bar");
 			}
