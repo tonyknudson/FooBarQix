@@ -52,14 +52,29 @@ public class StringCompute {
 	public String calculateOutput(Integer input) {
 		StringBuffer buffer = new StringBuffer();
 		buffer.append(checkDivisor(input));
-		buffer.append(checkZeroes(input.toString()));
+		
+		if (buffer.length() == 0) {
+			buffer.append(checkZeroes(input.toString(), false));
+		} else {
+			buffer.append(checkZeroes(input.toString(), true));
+		}
+		
 		buffer.append(checkContains(input));
+		
 
 		if (buffer.length() == 0) {
 			return input.toString();
 		} else {
 			return buffer.toString();
 		}
+	}
+	
+	public String checkZeroes(String input, Boolean ignore) {
+		if (ignore) {
+			input = input.replaceAll("[^0]", "");			
+		}
+		return input.replace('0', '*');
+
 	}
 
 	public String checkDivisor(Integer input) {
@@ -93,12 +108,6 @@ public class StringCompute {
 			}
 		}
 		return buffer.toString();
-	}
-
-	public String checkZeroes(String input) {
-		input = input.replaceAll("[^0]", "");
-		return input.replace('0', '*');
-
 	}
 
 }
