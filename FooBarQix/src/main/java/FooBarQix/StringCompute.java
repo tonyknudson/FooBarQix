@@ -67,28 +67,34 @@ public class StringCompute {
 	}
 
 	public String checkContains(Integer input) {
-		String inputString = input.toString();
-
 		StringBuffer buffer = new StringBuffer();
-		char[] numChars = new char[inputString.length()];
 
-		for (int i = 0; i < inputString.length(); i++) {
-			numChars[i] = inputString.charAt(i);
-		}
+		if (input != null) {
+			char[] numChars = getCharArray(input.toString());
 
-		for (char num : numChars) {
-			if (num == '3') {
-				buffer.append("Foo");
+			for (char num : numChars) {
+				if (num == '3') {
+					buffer.append("Foo");
+				}
+				if (num == '5') {
+					buffer.append("Bar");
+				}
+				if (num == '7') {
+					buffer.append("Qix");
+				}
 			}
-			if (num == '5') {
-				buffer.append("Bar");
-			}
-			if (num == '7') {
-				buffer.append("Qix");
-			}
-
 		}
 		return buffer.toString();
+	}
+
+	private char[] getCharArray(String input) {
+		char[] numChars = new char[input.length()];
+
+		for (int i = 0; i < input.length(); i++) {
+			numChars[i] = input.charAt(i);
+		}
+		
+		return numChars;
 	}
 
 	public String checkDivisor(Integer input) {
