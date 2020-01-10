@@ -13,9 +13,12 @@ public class StringComputeTest extends TestCase {
 		assertEquals("Foo", result);
 	}
 	
-	/*
-	 * 0, null, negatives
-	 */
+	public void test_stars() {
+		assertEquals("1*1", compute.calculateOutput(101));
+		assertEquals("FooFoo*Foo", compute.calculateOutput(303));
+		assertEquals("FooBarQix*Bar", compute.calculateOutput(105));
+		assertEquals("FooQix**", compute.calculateOutput(10101));
+	}
 	
 	@Test
 	public void test_numbers() {

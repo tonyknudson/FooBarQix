@@ -1,6 +1,7 @@
 package FooBarQix;
 
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class StringCompute {
 
@@ -51,13 +52,14 @@ public class StringCompute {
 	public String calculateOutput(Integer input) {
 		StringBuffer buffer = new StringBuffer();
 		buffer.append(checkDivisor(input));
+		buffer.append(checkZeroes(input.toString()));
 		buffer.append(checkContains(input));
 
 		if (buffer.length() == 0) {
-			buffer.append(input);
+			return input.toString();
+		} else {
+			return buffer.toString();
 		}
-
-		return buffer.toString();
 	}
 
 	public String checkDivisor(Integer input) {
@@ -82,17 +84,21 @@ public class StringCompute {
 		if (null != input) {
 			if (inputString.contains("3")) {
 				buffer.append("Foo");
-			} else if (inputString.contains("5")) {
+			}
+			if (inputString.contains("5")) {
 				buffer.append("Bar");
-			} else if (inputString.contains("7")) {
+			}
+			if (inputString.contains("7")) {
 				buffer.append("Qix");
 			}
 		}
 		return buffer.toString();
 	}
-	
-	public String checkZeroes(Integer input) {
-		return "";
+
+	public String checkZeroes(String input) {
+		input = input.replaceAll("[^0]", "");
+		return input.replace('0', '*');
+
 	}
 
 }
