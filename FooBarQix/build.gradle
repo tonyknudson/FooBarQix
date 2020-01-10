@@ -9,6 +9,7 @@
 plugins {
     // Apply the java-library plugin to add support for Java Library
     id 'java-library'
+    id 'java'
 }
 
 repositories {
@@ -26,4 +27,11 @@ dependencies {
 
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
+    testRuntime('org.junit.jupiter:junit-jupiter-engine:5.4.2')
+    
+
+}
+
+test {
+	useJUnitPlatform()
 }
