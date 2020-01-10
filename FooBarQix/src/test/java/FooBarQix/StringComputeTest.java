@@ -15,7 +15,7 @@ public class StringComputeTest extends TestCase {
 	
 	public void test_stars() {
 		assertEquals("1*1", compute.calculateOutput(101));
-		assertEquals("FooFoo*Foo", compute.calculateOutput(303));
+		assertEquals("Foo*FooFoo", compute.calculateOutput(303));
 		assertEquals("FooBarQix*Bar", compute.calculateOutput(105));
 		assertEquals("FooQix**", compute.calculateOutput(10101));
 	}
@@ -30,8 +30,14 @@ public class StringComputeTest extends TestCase {
 		assertEquals("Foo", compute.calculateOutput(6));
 		assertEquals("QixQix", compute.calculateOutput(7));
 		assertEquals("8", compute.calculateOutput(8));
+		assertEquals("Foo", compute.calculateOutput(9));
+		assertEquals("Bar*", compute.calculateOutput(10));
 		assertEquals("Foo", compute.calculateOutput(13));
+		assertEquals("FooBarBar", compute.calculateOutput(15));
 		assertEquals("FooQix", compute.calculateOutput(21));
+		assertEquals("FooFooFoo", compute.calculateOutput(33));
+		assertEquals("FooBar", compute.calculateOutput(51));
+		assertEquals("BarFoo", compute.calculateOutput(53));
 	}
 
 }

@@ -50,29 +50,29 @@ public class StringCompute {
 
 	public String calculateOutput(Integer input) {
 		StringBuffer buffer = new StringBuffer();
-		buffer.append(checkDivisor(input));
-		buffer.append(checkZeroes(input.toString(), buffer.length()));
-		buffer.append(checkContains(input));
-		
+		String divisor = checkDivisor(input);
+		String contains = checkContains(input);
 
-		if (buffer.length() == 0) {
-			return input.toString();
+		if (divisor.length() == 0 && contains.length() == 0) {
+			buffer.append(checkZeroes(input.toString(), false));
 		} else {
-			return buffer.toString();
+			buffer.append(divisor + checkZeroes(input.toString(), true) + contains);
 		}
+
+		return buffer.toString();
 	}
-	
-	public String checkZeroes(String input, Integer bufferLength) {
-		if (bufferLength != 0) {
-			input = input.replaceAll("[^0]", "");			
+
+	public String checkZeroes(String input, Boolean ignore) {
+		if (ignore) {
+			input = input.replaceAll("[^0]", "");
 		}
 		return input.replace('0', '*');
 
 	}
-	
+
 	public String checkContains(Integer input) {
 		String inputString = input.toString();
-		
+
 		StringBuffer buffer = new StringBuffer();
 		char[] numChars = new char[inputString.length()];
 
