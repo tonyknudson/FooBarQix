@@ -5,28 +5,44 @@ import java.util.Scanner;
 public class StringCompute {
 
 	public static void main(String[] args) {
-		try {
-			StringCompute compute = new StringCompute();
-			Integer input = getInput();
-			String output = compute.calculateOutput(input);
-			System.out.println(output);
+		Boolean shouldContinue = true;
+		try (Scanner in = new Scanner(System.in)) {
+			while (shouldContinue) {
+				StringCompute compute = new StringCompute();
+				Integer input = getInput(in);
+				String output = compute.calculateOutput(input);
+				System.out.println(output);
+				shouldContinue = getShouldContinue(in);
+			}
 		} catch (Exception e) {
 			System.out.println("Something went wrong:\n");
 			e.printStackTrace();
 		}
 	}
 
-	private static Integer getInput() {
+	private static Boolean getShouldContinue(Scanner in) {
+		String exitMessage = "\nExiting \nThank you for using StringCompute";
+		try {
+			System.out.println("\nWould you like to parse another number (y/n)?");
+			Boolean shouldContinue = in.nextLine().equals("y");
+			if (!shouldContinue) {
+				System.out.println(exitMessage);
+			}
+			return shouldContinue;
+		} catch (Exception e) {
+			System.out.println(exitMessage);
+			return false;
+		}
+	}
+
+	private static Integer getInput(Scanner in) {
 		Integer input = 0;
-		try (Scanner in = new Scanner(System.in)) {
-			while (input == 0) {
-				try {
-					System.out.println("Please enter a positive number and press enter");
-					String inputString = (in.nextLine());
-					input = Integer.parseInt(inputString);
-				} catch (NumberFormatException e) {
-					System.out.println("That doesn't appear to be valid\n");
-				}
+		while (input == 0) {
+			try {
+				System.out.println("Please enter a positive number and press enter");
+				input = Integer.parseInt(in.nextLine());
+			} catch (NumberFormatException e) {
+				System.out.println("That doesn't appear to be valid\n");
 			}
 		}
 		return input;
