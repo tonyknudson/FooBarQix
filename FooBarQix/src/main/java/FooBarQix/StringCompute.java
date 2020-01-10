@@ -76,6 +76,31 @@ public class StringCompute {
 		return input.replace('0', '*');
 
 	}
+	
+	public String checkContains(Integer input) {
+		String inputString = input.toString();
+		
+		StringBuffer buffer = new StringBuffer();
+		char[] chars = new char[inputString.length()];
+
+		for (int i = 0; i < inputString.length(); i++) {
+			chars[i] = inputString.charAt(i);
+		}
+
+		for (char c : chars) {
+			if (c == '3') {
+				buffer.append("Foo");
+			}
+			if (c == '5') {
+				buffer.append("Bar");
+			}
+			if (c == '7') {
+				buffer.append("Qix");
+			}
+
+		}
+		return buffer.toString();
+	}
 
 	public String checkDivisor(Integer input) {
 		StringBuffer buffer = new StringBuffer();
@@ -87,23 +112,6 @@ public class StringCompute {
 				buffer.append("Bar");
 			}
 			if (input % 7 == 0) {
-				buffer.append("Qix");
-			}
-		}
-		return buffer.toString();
-	}
-
-	public String checkContains(Integer input) {
-		String inputString = input.toString();
-		StringBuffer buffer = new StringBuffer();
-		if (null != input) {
-			if (inputString.contains("3")) {
-				buffer.append("Foo");
-			}
-			if (inputString.contains("5")) {
-				buffer.append("Bar");
-			}
-			if (inputString.contains("7")) {
 				buffer.append("Qix");
 			}
 		}
