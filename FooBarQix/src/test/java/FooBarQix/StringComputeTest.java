@@ -29,14 +29,20 @@ public class StringComputeTest extends TestCase {
 	
 	@Test
 	public void test_zeroes() {
-		assertEquals("CheckZeroes input 30, false","3*", compute.checkZeroes("30", false));
-		assertEquals("CheckZeroes input 50, false","5*", compute.checkZeroes("50", false));
-		assertEquals("CheckZeroes input 70, false","7*", compute.checkZeroes("70", false));	
+		assertEquals("CheckZeroes input <empty>, false","", compute.checkZeroes("", false));
+		assertEquals("CheckZeroes input 1, false","1", compute.checkZeroes("1", false));
+		assertEquals("CheckZeroes input 10, false","1*", compute.checkZeroes("10", false));
 		assertEquals("CheckZeroes input 100, false","1**", compute.checkZeroes("100", false));
-		assertEquals("CheckZeroes input 30, true","*", compute.checkZeroes("30", true));
-		assertEquals("CheckZeroes input 50, true","*", compute.checkZeroes("50", true));
-		assertEquals("CheckZeroes input 70, true","*", compute.checkZeroes("70", true));	
+		assertEquals("CheckZeroes input 1000, false","1***", compute.checkZeroes("1000", false));
+		assertEquals("CheckZeroes input 1001, false","1**1", compute.checkZeroes("1001", false));
+		assertEquals("CheckZeroes input 10101, false","1*1*1", compute.checkZeroes("10101", false));
+		assertEquals("CheckZeroes input <empty>, false","", compute.checkZeroes("", true));
+		assertEquals("CheckZeroes input 1, true","", compute.checkZeroes("1", true));
+		assertEquals("CheckZeroes input 10, true","*", compute.checkZeroes("10", true));
 		assertEquals("CheckZeroes input 100, true","**", compute.checkZeroes("100", true));	
+		assertEquals("CheckZeroes input 1000, true","***", compute.checkZeroes("1000", true));
+		assertEquals("CheckZeroes input 1001, true","**", compute.checkZeroes("1001", true));
+		assertEquals("CheckZeroes input 1001, true","**", compute.checkZeroes("10101", true));
 	}
 	
 	public void test_stars() {

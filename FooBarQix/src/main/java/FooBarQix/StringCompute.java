@@ -59,8 +59,8 @@ public class StringCompute {
 		}
 	}
 
-	public String checkZeroes(String input, Boolean replaceNonZeroChars) {
-		if (replaceNonZeroChars) {
+	public String checkZeroes(String input, Boolean removeNonZeroChars) {
+		if (removeNonZeroChars) {
 			input = input.replaceAll("[^0]", "");
 		}
 		return input.replace('0', '*');
