@@ -49,25 +49,21 @@ public class StringCompute {
 	}
 
 	public String calculateOutput(Integer input) {
-		StringBuffer buffer = new StringBuffer();
 		String divisor = checkDivisor(input);
 		String contains = checkContains(input);
 
 		if (divisor.length() == 0 && contains.length() == 0) {
-			buffer.append(checkZeroes(input.toString(), false));
+			return checkZeroes(input.toString(), false);
 		} else {
-			buffer.append(divisor + checkZeroes(input.toString(), true) + contains);
+			return divisor + checkZeroes(input.toString(), true) + contains;
 		}
-
-		return buffer.toString();
 	}
 
-	public String checkZeroes(String input, Boolean ignore) {
-		if (ignore) {
+	public String checkZeroes(String input, Boolean replaceNonZeroChars) {
+		if (replaceNonZeroChars) {
 			input = input.replaceAll("[^0]", "");
 		}
 		return input.replace('0', '*');
-
 	}
 
 	public String checkContains(Integer input) {
