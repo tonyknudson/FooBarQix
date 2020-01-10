@@ -36,8 +36,8 @@ public class StringCompute {
 	}
 
 	private static Integer getInput(Scanner in) {
-		Integer input = 0;
-		while (input == 0) {
+		Integer input = -1;
+		while (input == -1) {
 			try {
 				System.out.println("Please enter a positive number and press enter");
 				input = Integer.parseInt(in.nextLine());
@@ -78,15 +78,20 @@ public class StringCompute {
 
 	public String checkContains(Integer input) {
 		String inputString = input.toString();
+		StringBuffer buffer = new StringBuffer();
 		if (null != input) {
 			if (inputString.contains("3")) {
-				return "Foo";
+				buffer.append("Foo");
 			} else if (inputString.contains("5")) {
-				return "Bar";
+				buffer.append("Bar");
 			} else if (inputString.contains("7")) {
-				return "Qix";
+				buffer.append("Qix");
 			}
 		}
+		return buffer.toString();
+	}
+	
+	public String checkZeroes(Integer input) {
 		return "";
 	}
 
