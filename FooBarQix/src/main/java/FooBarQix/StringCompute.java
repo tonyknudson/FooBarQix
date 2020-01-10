@@ -52,13 +52,7 @@ public class StringCompute {
 	public String calculateOutput(Integer input) {
 		StringBuffer buffer = new StringBuffer();
 		buffer.append(checkDivisor(input));
-		
-		if (buffer.length() == 0) {
-			buffer.append(checkZeroes(input.toString(), false));
-		} else {
-			buffer.append(checkZeroes(input.toString(), true));
-		}
-		
+		buffer.append(checkZeroes(input.toString(), buffer.length()));
 		buffer.append(checkContains(input));
 		
 
@@ -69,8 +63,8 @@ public class StringCompute {
 		}
 	}
 	
-	public String checkZeroes(String input, Boolean ignore) {
-		if (ignore) {
+	public String checkZeroes(String input, Integer bufferLength) {
+		if (bufferLength != 0) {
 			input = input.replaceAll("[^0]", "");			
 		}
 		return input.replace('0', '*');
@@ -81,20 +75,20 @@ public class StringCompute {
 		String inputString = input.toString();
 		
 		StringBuffer buffer = new StringBuffer();
-		char[] chars = new char[inputString.length()];
+		char[] numChars = new char[inputString.length()];
 
 		for (int i = 0; i < inputString.length(); i++) {
-			chars[i] = inputString.charAt(i);
+			numChars[i] = inputString.charAt(i);
 		}
 
-		for (char c : chars) {
-			if (c == '3') {
+		for (char num : numChars) {
+			if (num == '3') {
 				buffer.append("Foo");
 			}
-			if (c == '5') {
+			if (num == '5') {
 				buffer.append("Bar");
 			}
-			if (c == '7') {
+			if (num == '7') {
 				buffer.append("Qix");
 			}
 
