@@ -1,22 +1,42 @@
 package FooBarQix;
 
+import java.util.Scanner;
+
 public class StringCompute {
 
 	public static void main(String[] args) {
-		String input = "21";
-		// Accept input
-		// Tokenize string
-		// Loop tokens through divisor and contains methods
-		// Add results to stringBuffer
-		// Output string buffer
-		// System.out.println(StringCompute.doMain(input));
+		try {
+			StringCompute compute = new StringCompute();
+			Integer input = getInput();
+			String output = compute.calculateOutput(input);
+			System.out.println(output);
+		} catch (Exception e) {
+			System.out.println("Something went wrong:\n");
+			e.printStackTrace();
+		}
 	}
 
-	public String doMain(String input) {
+	private static Integer getInput() {
+		Integer input = 0;
+		try (Scanner in = new Scanner(System.in)) {
+			while (input == 0) {
+				try {
+					System.out.println("Please enter a positive number and press enter");
+					String inputString = (in.nextLine());
+					input = Integer.parseInt(inputString);
+				} catch (NumberFormatException e) {
+					System.out.println("That doesn't appear to be valid\n");
+				}
+			}
+		}
+		return input;
+	}
+
+	public String calculateOutput(Integer input) {
 		StringBuffer buffer = new StringBuffer();
 		buffer.append(checkDivisor(input));
 		buffer.append(checkContains(input));
-		
+
 		if (buffer.length() == 0) {
 			buffer.append(input);
 		}
@@ -24,30 +44,30 @@ public class StringCompute {
 		return buffer.toString();
 	}
 
-	public String checkDivisor(String input) {
+	public String checkDivisor(Integer input) {
 		StringBuffer buffer = new StringBuffer();
 		if (null != input) {
-			Integer number = Integer.parseInt(input);
-			if (number % 3 == 0) {
+			if (input % 3 == 0) {
 				buffer.append("Foo");
 			}
-			if (number % 5 == 0) {
+			if (input % 5 == 0) {
 				buffer.append("Bar");
 			}
-			if (number % 7 == 0) {
+			if (input % 7 == 0) {
 				buffer.append("Qix");
 			}
 		}
 		return buffer.toString();
 	}
 
-	public String checkContains(String input) {
+	public String checkContains(Integer input) {
+		String inputString = input.toString();
 		if (null != input) {
-			if (input.contains("3")) {
+			if (inputString.contains("3")) {
 				return "Foo";
-			} else if (input.contains("5")) {
+			} else if (inputString.contains("5")) {
 				return "Bar";
-			} else if (input.contains("7")) {
+			} else if (inputString.contains("7")) {
 				return "Qix";
 			}
 		}
